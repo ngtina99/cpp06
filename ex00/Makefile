@@ -1,8 +1,12 @@
 NAME = ex00
 
-SRC = main.cpp Bureaucrat.cpp
-OBJ = $(SRC:.cpp=.o)
-HEADER = Bureaucrat.hpp
+SRC_DIR = ./sources/
+SRC = main.cpp ScalarConverter.cpp
+OBJ = $(addprefix $(SRC_DIR), $(SRC:.cpp=.o))
+
+INC_DIR = ./includes/
+INC = Bureaucrat.hpp
+HEADER = $(addprefix $(INC_DIR), $(INC))
 
 CC = c++
 RM = rm -f
