@@ -6,22 +6,22 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:37:54 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/01/28 01:53:15 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/01/29 02:14:30 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter(/* args */)
+ScalarConverter::ScalarConverter() : _
 {
 }
 
-ScalarConverter::~ScalarConverter()
-{
+ScalarConverter::~ScalarConverter() {
+	
 }
 
 void ScalarConverter::convert(const std::string &value) {
-	double stringConverter = static_cast<double>(value[0]);
+	double stringConverter = static_cast<double>(value);
 	//std::cout << static_cast<int>(stringConverter) << std::endl;
 	convertInt(stringConverter);
 	convertChar(stringConverter);
