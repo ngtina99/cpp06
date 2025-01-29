@@ -5,7 +5,7 @@ SRC = main.cpp ScalarConverter.cpp
 OBJ = $(addprefix $(SRC_DIR), $(SRC:.cpp=.o))
 
 INC_DIR = ./includes/
-INC = Bureaucrat.hpp
+INC = ScalarConverter.hpp
 HEADER = $(addprefix $(INC_DIR), $(INC))
 
 CC = c++
