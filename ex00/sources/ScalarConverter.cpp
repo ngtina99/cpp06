@@ -6,7 +6,7 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:37:54 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/01/29 05:07:12 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/01/30 00:52:33 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ ScalarConverter::ScalarConverter() {
 }
 
 ScalarConverter::~ScalarConverter() {
+}
+
+ScalarConverter::ScalarConverter( const ScalarConverter &copy) {
+}
+
+ScalarConverter &ScalarConverter::operator=( const ScalarConverter &rhs) {
+	return (*this);
 }
 
 size_t const ScalarConverter::PrecisionChecker(const std::string &value) {

@@ -6,7 +6,7 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:38:39 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/01/29 04:52:57 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/01/30 00:50:05 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,8 @@ private:
 
 public:
 	ScalarConverter();
-	// ScalarConverter(const std::string &stringArg);
-	// ScalarConverter( const );
-	// ScalarConverter &operator=(/* args */);
+	ScalarConverter( const ScalarConverter &copy);
+	ScalarConverter &operator=( const ScalarConverter &rhs);
 	~ScalarConverter();
 
 	static void convert(const std::string &type);
