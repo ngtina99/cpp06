@@ -1,11 +1,11 @@
 NAME = convert
 
 SRC_DIR = ./sources/
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp Base.hpp A.hpp B.hpp C.hpp
 OBJ = $(addprefix $(SRC_DIR), $(SRC:.cpp=.o))
 
 INC_DIR = ./includes/
-INC = ScalarConverter.hpp
+INC = Base.hpp A.hpp B.hpp C.hpp
 HEADER = $(addprefix $(INC_DIR), $(INC))
 
 CC = c++
