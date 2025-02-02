@@ -6,7 +6,7 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 01:22:09 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/02 22:54:47 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/02 23:43:09 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ class Base {
 	public:
 
 		virtual ~Base() {}
+	    virtual void printType() const {
+        std::cout << "I am a Base object" << std::endl;
+    }
 };
 
 #endif

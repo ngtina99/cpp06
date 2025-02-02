@@ -6,7 +6,7 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 01:32:34 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/02 23:35:21 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/02 23:44:28 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,40 @@ void identify(Base* p) {
 // It prints the actual type of the object pointed to by p: "A", "B" or "C".
 
 void identify(Base& p) {
-	try {
-		A referenceA = dynamic_cast<A &>(p);
-		std::cout << "A is identified with a pointer" << std::endl;
-		return ;
-	}
-	catch (std::exception &e) {
-		std::cout << "Caught exception: " << e.what() << std::endl;
-	}
-	try {
-		B referenceB = dynamic_cast<B &>(p);
-		std::cout << "B is identified with a pointer" << std::endl;
-		return ;
-	}
-	catch (std::exception &e) {
-		std::cout << "Caught exception: " << e.what() << std::endl;
-	}
-	try {
-		C referenceC = dynamic_cast<C &>(p);
-		std::cout << "C is identified with a pointer" << std::endl;
-		return ;
-	}
-	catch (std::exception &e) {
-		std::cout << "Caught exception: " << e.what() << std::endl;
-	}
+	    if (A* a = dynamic_cast<A*>(&p)) {
+        std::cout << "A is identified with a reference" << std::endl;
+    } else if (B* b = dynamic_cast<B*>(&p)) {
+        std::cout << "B is identified with a reference" << std::endl;
+    } else if (C* c = dynamic_cast<C*>(&p)) {
+        std::cout << "C is identified with a reference" << std::endl;
+    } else {
+        std::cout << MYRED << "No type is identified" << MYEOF << std::endl;
+    }
+	// try {
+	// 	A referenceA = dynamic_cast<A &>(p);
+	// 	std::cout << "A is identified with a pointer" << std::endl;
+	// 	return ;
+	// }
+	// catch (std::exception &e) {
+	// 	std::cout << "Caught exception: " << e.what() << std::endl;
+	// }
+	// try {
+	// 	B referenceB = dynamic_cast<B &>(p);
+	// 	std::cout << "B is identified with a reference" << std::endl;
+	// 	return ;
+	// }
+	// catch (std::exception &e) {
+	// 	std::cout << "Caught exception: " << e.what() << std::endl;
+	// }
+	// try {
+	// 	C referenceC = dynamic_cast<C &>(p);
+	// 	std::cout << "C is identified with a reference" << std::endl;
+	// 	return ;
+	// }
+	// catch (std::exception &e) {
+	// 	std::cout << "Caught exception: " << e.what() << std::endl;
+	// }
+    // std::cout << MYRED << "No type is reference" << MYEOF << std::endl;
 }
 
 // It prints the actual type of the object pointed to by p: "A", "B" or "C". Using a pointer
@@ -87,14 +97,18 @@ int main() {
     identify(*obj);
     
     // Proof of downcasting
-    if (A* a = dynamic_cast<A*>(obj)) {
-        std::cout << "Downcasting succeeded: Object is of type A" << std::endl;
-    } else if (B* b = dynamic_cast<B*>(obj)) {
-        std::cout << "Downcasting succeeded: Object is of type B" << std::endl;
-    } else if (C* c = dynamic_cast<C*>(obj)) {
-        std::cout << "Downcasting succeeded: Object is of type C" << std::endl;
-    }
-    
+	if (A* a = dynamic_cast<A*>(obj)) {
+		std::cout << "Downcasting succeeded: Object is of type A" << std::endl;
+		a->printType();  // Output specific to A
+	} else if (B* b = dynamic_cast<B*>(obj)) {
+		std::cout << "Downcasting succeeded: Object is of type B" << std::endl;
+		b->printType();  // Output specific to B
+	} else if (C* c = dynamic_cast<C*>(obj)) {
+		std::cout << "Downcasting succeeded: Object is of type C" << std::endl;
+		c->printType();  // Output specific to C
+	} else {
+		std::cout << "Downcasting failed: Object is not of type A, B, or C" << std::endl;
+	}
     delete obj;
     return 0;
 }
