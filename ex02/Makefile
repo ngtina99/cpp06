@@ -1,4 +1,4 @@
-NAME = convert
+NAME = dynamicCast
 
 SRC_DIR = ./sources/
 SRC = main.cpp
