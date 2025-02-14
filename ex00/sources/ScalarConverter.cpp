@@ -6,7 +6,7 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:37:54 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/14 03:05:08 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/14 03:08:32 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ double const ScalarConverter::StringToDouble(const std::string &value) {
     if (value == "nan" || value == "nanf") {
         return (std::nan(""));
     }
-    if (value == "+inf" || value == "inf" || value == "+inff" || value == "inff") {
+    else if (value == "+inf" || value == "inf" || value == "+inff" || value == "inff") {
         return (INFINITY);
     }
-	if (value == "-inf" || value == "-inff") {
+	else if (value == "-inf" || value == "-inff") {
 		return (-INFINITY);
     }
 	size_t i = 0;
@@ -139,7 +139,7 @@ void ScalarConverter::ConvertDouble(double typeDouble, size_t i, size_t len) {
 	else if (typeDouble > std::numeric_limits<double>::max())
 		std::cout << "double: inf" << std::endl;
 	else if (typeDouble < std::numeric_limits<double>::lowest())
-		std::cout << "float: -inff" << std::endl;
+		std::cout << "double: -inf" << std::endl;
 	else if (i == 0 && len <= 7)
 		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(typeDouble) <<std::endl;
 	else if (len > 7)
