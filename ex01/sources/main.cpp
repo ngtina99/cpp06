@@ -6,7 +6,7 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 01:07:33 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/14 14:07:29 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/14 14:40:26 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 #include "../includes/Data.hpp"
 
 int main() {
-	Data d1;
-	d1.name = "Pedro";
-	d1.num = 1;
+	Data *d1 = new Data();
+	d1->name = "Pedro";
+	d1->num = 1;
 
-	Data d2;
-	d2.name = "Joao ";
-	d2.num = 100;
+	Data *d2 = new Data();
+	d2->name = "Joao ";
+	d2->num = 100;
 
 	std::cout << "- Original Data Structures:\n";
-	std::cout << "d1 Address: " << &d1 << " | Name: " << d1.name << " | Num: " << d1.num << std::endl;
-	std::cout << "d2 Address: " << &d2 << " | Name: " << d2.name << " | Num: " << d2.num << std::endl;
+	std::cout << "d1 Address: " << d1 << " | Name: " << d1->name << " | Num: " << d1->num << std::endl;
+	std::cout << "d2 Address: " << d2 << " | Name: " << d2->name << " | Num: " << d2->num << std::endl;
 
 	// Serialize
-	uintptr_t raw1 = Serializer::serialize(&d1);
-	uintptr_t raw2 = Serializer::serialize(&d2);
+	uintptr_t raw1 = Serializer::serialize(d1);
+	uintptr_t raw2 = Serializer::serialize(d2);
 
 	std::cout << "\n- Serialized Values:\n";
 	std::cout << "d1 Serialized: " << raw1 << std::endl;
@@ -39,12 +39,12 @@ int main() {
 	Data *deserialized2 = Serializer::deserialize(raw2);
 
 	std::cout << "\n- Deserialized Data Structures:\n";
-	std::cout << "Deserialized d1 Address: " << deserialized1 << " | Name: " << deserialized1->name << " | Num: " << deserialized1->num << std::endl;
-	std::cout << "Deserialized d2 Address: " << deserialized2 << " | Name: " << deserialized2->name << " | Num: " << deserialized2->num << std::endl;
+	std::cout << "Deserialized Address: " << deserialized1 << " | Name: " << deserialized1->name << " | Num: " << deserialized1->num << std::endl;
+	std::cout << "Deserialized Address: " << deserialized2 << " | Name: " << deserialized2->name << " | Num: " << deserialized2->num << std::endl;
 
 	// Address Check
 	std::cout << "\n- Address Check: ";
-	if (deserialized1 == &d1 && deserialized2 == &d2) {
+	if (deserialized1 == d1 && deserialized2 == d2) {
 		std::cout << MYGREEN << "PASSED" << MYEOF << std::endl;
 	} else {
 		std::cout << MYRED <<"FAILED" << MYEOF << std::endl;
@@ -58,6 +58,9 @@ int main() {
 	} else {
 		std::cout << MYRED <<"FAILED" << MYEOF << std::endl;
 	}
+
+	delete d1;
+	delete d2;
 
 	// Null Pointer Test
 	Data *nullPtr = nullptr;
