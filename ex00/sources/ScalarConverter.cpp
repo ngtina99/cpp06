@@ -6,7 +6,7 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:37:54 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/14 02:37:12 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/14 03:05:08 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,12 @@ double const ScalarConverter::StringToDouble(const std::string &value) {
 	if (value == "-inf" || value == "-inff") {
 		return (-INFINITY);
     }
-	if (value[0] == '-')
+	size_t i = 0;
+	if (value[0] == '-') {
 		negativeSign  = -1;
-	for (size_t i = 0; i < stringSize; i++) {
+		i = 1;
+	}
+	for (i; i < stringSize; i++) {
 		if(((value[i] < '0' || value[i] > '9') && (value[i] != 'f' && value[i] != '.')) || fCounter == 1) {
 			std::cerr << MYRED << "Error: Invalid input" << MYEOF << std::endl;
 			exit (1);
@@ -115,28 +118,32 @@ void ScalarConverter::ConvertInt(double typeInt) {
 		std::cout << "int: " << static_cast<int>(typeInt) << std::endl;
 }
 
-void ScalarConverter::ConvertFloat(double typeFloat, size_t i) {
+void ScalarConverter::ConvertFloat(double typeFloat, size_t i, size_t len) {
 	if (std::isnan(typeFloat))
 		std::cout << "float: nanf" << std::endl;
 	else if (typeFloat > std::numeric_limits<float>::max())
 		std::cout << "float: inff" << std::endl;
-	else if (typeFloat < std::numeric_limits<float>::min())
+	else if (typeFloat < std::numeric_limits<float>::lowest())
 		std::cout << "float: -inff" << std::endl;
-	else if(i == 0)
+	else if(i == 0 && len <= 7)
 		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(typeFloat) << "f" <<std::endl;
+	else if(len > 7)	
+		std::cout << "float: " << std::setprecision(i) << static_cast<float>(typeFloat) << "f" <<std::endl;
 	else
 		std::cout << "float: " << std::fixed << std::setprecision(i) << static_cast<float>(typeFloat) << "f" <<std::endl;
 }
 
-void ScalarConverter::ConvertDouble(double typeDouble, size_t i) {
+void ScalarConverter::ConvertDouble(double typeDouble, size_t i, size_t len) {
 	if (std::isnan(typeDouble))
 		std::cout << "double: nan" << std::endl;
 	else if (typeDouble > std::numeric_limits<double>::max())
 		std::cout << "double: inf" << std::endl;
-	else if (typeDouble < std::numeric_limits<double>::min())
-		std::cout << "double: -inf" << std::endl;
-	else if(i == 0)
+	else if (typeDouble < std::numeric_limits<double>::lowest())
+		std::cout << "float: -inff" << std::endl;
+	else if (i == 0 && len <= 7)
 		std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(typeDouble) <<std::endl;
+	else if (len > 7)
+		std::cout << "double: " << std::setprecision(i) << static_cast<double>(typeDouble) << std::endl;
 	else
 		std::cout << "double: " << std::fixed << std::setprecision(i) << static_cast<double>(typeDouble) << std::endl;
 }
@@ -146,6 +153,7 @@ void ScalarConverter::convert(const std::string &value) {
 	ScalarConverter a;
 	double convertedValue;
 
+	size_t len = value.length();
 	size_t precisionNum = a.PrecisionChecker(value); 
 	if (value.size() == 1 && std::isprint(value[0]))
 		convertedValue = static_cast<double>(value[0]);
@@ -154,7 +162,7 @@ void ScalarConverter::convert(const std::string &value) {
 
 	a.ConvertChar(convertedValue);
 	a.ConvertInt(convertedValue);
-	a.ConvertFloat(convertedValue, precisionNum);
-	a.ConvertDouble(convertedValue, precisionNum);
+	a.ConvertFloat(convertedValue, precisionNum, len);
+	a.ConvertDouble(convertedValue, precisionNum, len);
 
 }

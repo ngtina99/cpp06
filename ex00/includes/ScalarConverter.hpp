@@ -6,7 +6,7 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:38:39 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/14 01:53:59 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/14 02:59:14 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ class ScalarConverter
 		static void convert(const std::string &type);
 		void	ConvertInt( double value );
 		void	ConvertChar( double value );
-		void	ConvertFloat( double value, size_t precision );
-		void	ConvertDouble( double value, size_t precision );
+		void	ConvertFloat( double value, size_t precision, size_t len );
+		void	ConvertDouble( double value, size_t precision, size_t len );
 
 
 };
