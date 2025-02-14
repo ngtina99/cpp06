@@ -6,7 +6,7 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:37:54 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/14 03:08:32 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/14 13:14:04 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ ScalarConverter &ScalarConverter::operator=( const ScalarConverter &rhs) {
 
 size_t const ScalarConverter::PrecisionChecker(const std::string &value) {
 
-	size_t	stringSize = value.size();
+	size_t	stringLen = value.size();
 	size_t	dotCounter = 0;
 	size_t	precisionNum = 0;
 
-	if (value[stringSize - 1] == '.' || (value[stringSize - 1] == 'f' && stringSize == 1)) {
+	if (value[stringLen - 1] == '.' || (value[stringLen - 1] == 'f' && stringLen == 1)) {
 		std::cerr << MYRED << "Error: Invalid Input" << MYEOF << std::endl;
 		exit (1);
 	}
-	if (value[stringSize - 1] == 'f') {
-		stringSize = stringSize - 1;
+	if (value[stringLen - 1] == 'f') {
+		stringLen = stringLen - 1;
 	}
-	for(size_t i = 0; i < stringSize; i++) {
+	for(size_t i = 0; i < stringLen; i++) {
 		if (dotCounter > 1) {
 			std::cerr << MYRED << "Error: Invalid Input" << MYEOF << std::endl;
 			exit (1);
@@ -59,7 +59,7 @@ double const ScalarConverter::StringToDouble(const std::string &value) {
 	double	divisorFraction = 1.0;
 	size_t	fCounter = 0;
 
-	int stringSize = value.size();
+	int stringLen = value.length();
     if (value == "nan" || value == "nanf") {
         return (std::nan(""));
     }
@@ -74,7 +74,7 @@ double const ScalarConverter::StringToDouble(const std::string &value) {
 		negativeSign  = -1;
 		i = 1;
 	}
-	for (i; i < stringSize; i++) {
+	for (i; i < stringLen; i++) {
 		if(((value[i] < '0' || value[i] > '9') && (value[i] != 'f' && value[i] != '.')) || fCounter == 1) {
 			std::cerr << MYRED << "Error: Invalid input" << MYEOF << std::endl;
 			exit (1);
@@ -85,7 +85,7 @@ double const ScalarConverter::StringToDouble(const std::string &value) {
 		}
 		if (value[i] == 'f')
 			fCounter = 1;
-		if(fCounter == 1 && i == stringSize - 1)
+		if(fCounter == 1 && i == stringLen - 1)
 			break ;
 		else if (isFraction) {
 			divisorFraction *= 10.0;
@@ -154,11 +154,15 @@ void ScalarConverter::convert(const std::string &value) {
 	double convertedValue;
 
 	size_t len = value.length();
-	size_t precisionNum = a.PrecisionChecker(value); 
-	if (value.size() == 1 && std::isprint(value[0]))
+	size_t precisionNum; 
+	if (value.size() == 1 && std::isprint(value[0]) && !std::isdigit(value[0])) {
+		precisionNum = 0;
 		convertedValue = static_cast<double>(value[0]);
-	else
+	}
+	else {
+		precisionNum = a.PrecisionChecker(value); 
 		convertedValue = a.StringToDouble(value);
+	}
 
 	a.ConvertChar(convertedValue);
 	a.ConvertInt(convertedValue);
