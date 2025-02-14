@@ -6,7 +6,7 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 01:32:34 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/14 16:16:23 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/14 16:35:52 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ Base *generate(void) {
 //if dynamic_cast fails, the result will be nullptr, and you can test for that explicitly
 void	identify(Base* p) {
 	if (dynamic_cast<A*>(p) != NULL)
-		std::cout << "A is identified with a pointer" << std::endl;
+		std::cout <<MYGREEN "A is identified" MYEOF<< std::endl;
 	else if (dynamic_cast<B*>(p) != NULL)
-		std::cout << "B is identified with a pointer" << std::endl;
+		std::cout <<MYGREEN "B is identified" MYEOF<< std::endl;
 	else if (dynamic_cast<C*>(p) != NULL)
-		std::cout << "C is identified with a pointer" << std::endl;
+		std::cout <<MYGREEN "C is identified" MYEOF<< std::endl;
 	else
 		std::cout << MYRED << "No type is identified" << MYEOF << std::endl;	
 }
@@ -49,21 +49,21 @@ void	identify(Base* p) {
 void	identify(Base& p) {
 	try {
 		A referenceA = dynamic_cast<A &>(p);
-		std::cout << "A is identified with a reference" << std::endl;
+		std::cout <<MYGREEN "A is identified" MYEOF<< std::endl;
 		return ;
 	}
 	catch (std::exception &e) {
 	}
 	try {
 		B referenceB = dynamic_cast<B &>(p);
-		std::cout << "B is identified with a reference" << std::endl;
+		std::cout <<MYGREEN "B is identified" MYEOF<< std::endl;
 		return ;
 	}
 	catch (std::exception &e) {
 	}
 	try {
 		C referenceC = dynamic_cast<C &>(p);
-		std::cout << "C is identified with a reference" << std::endl;
+		std::cout <<MYGREEN "C is identified" MYEOF<< std::endl;
 		return ;
 	}
 	catch (std::exception &e) {
@@ -89,15 +89,5 @@ int	main() {
 	std::cout << "Identification by reference: ";
 	identify(*obj);
 
-	// proof of downcasting
-	if (A* a = dynamic_cast<A*>(obj)) {
-		std::cout << MYGREEN "Downcasting succeeded: Object is of type A" MYEOF<< std::endl;
-	} else if (B* b = dynamic_cast<B*>(obj)) {
-		std::cout << MYGREEN "Downcasting succeeded" MYEOF<< ":" << MYBLUE " Object is of type B" MYEOF<< std::endl;
-	} else if (C* c = dynamic_cast<C*>(obj)) {
-		std::cout << MYGREEN "Downcasting succeeded: Object is of type C" MYEOF << std::endl;
-	} else {
-		std::cout << MYRED "Errord: downcasting failed" MYEOF<< std::endl;
-	}
 	delete obj;
 }
