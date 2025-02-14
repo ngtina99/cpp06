@@ -6,7 +6,7 @@
 /*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:38:39 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/01/30 00:50:05 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/14 01:53:59 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,31 @@
 #define MYPURPLE "\033[1;35m"
 
 #include <iostream>
-#include <limits>
-#include <cmath>
+#include <limits> // numeric_limits
+#include <cmath> // isnan, isinf
+#include <iomanip> //setpricision
 
 class ScalarConverter
 {
-private:
+	private:
 
-	static  double	const StringToDouble(const std::string &value);
-	static  size_t	const PrecisionChecker(const std::string &value);
-	void	ConvertInt( double value );
-	void	ConvertChar( double value );
-	void	ConvertFloat( double value, size_t precision );
-	void	ConvertDouble( double value, size_t precision );
+		ScalarConverter(); // Private constructor prevents instantiation
+		~ScalarConverter();
+		ScalarConverter( const ScalarConverter &copy);
+		ScalarConverter &operator=( const ScalarConverter &rhs);
 
-public:
-	ScalarConverter();
-	ScalarConverter( const ScalarConverter &copy);
-	ScalarConverter &operator=( const ScalarConverter &rhs);
-	~ScalarConverter();
+		static  double	const StringToDouble(const std::string &value);
+		static  size_t	const PrecisionChecker(const std::string &value);
 
-	static void convert(const std::string &type);
+	public:
+
+		static void convert(const std::string &type);
+		void	ConvertInt( double value );
+		void	ConvertChar( double value );
+		void	ConvertFloat( double value, size_t precision );
+		void	ConvertDouble( double value, size_t precision );
+
+
 };
 
 
