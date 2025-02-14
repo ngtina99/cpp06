@@ -5,7 +5,7 @@ SRC = main.cpp Serializer.cpp
 OBJ = $(addprefix $(SRC_DIR), $(SRC:.cpp=.o))
 
 INC_DIR = ./includes/
-INC = Serializer.hpp
+INC = Serializer.hpp Data.hpp
 HEADER = $(addprefix $(INC_DIR), $(INC))
 
 CC = c++
