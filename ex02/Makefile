@@ -1,7 +1,7 @@
-NAME = serializer
+NAME = downcast
 
 SRC_DIR = ./sources/
-SRC = main.cpp
+SRC = main.cpp Base.cpp
 OBJ = $(addprefix $(SRC_DIR), $(SRC:.cpp=.o))
 
 INC_DIR = ./includes/
