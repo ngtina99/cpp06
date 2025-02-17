@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thuy-ngu <thuy-ngu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 00:42:11 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/14 14:13:52 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/17 20:23:42 by thuy-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Serializer::Serializer(const Serializer &copy) {
 
 Serializer &Serializer::operator=(const Serializer &rhs) {
 	std::cout << "Serializer copy assignment operator called" << std::endl;
+	(void) rhs;
 	return (*this);
 }
 

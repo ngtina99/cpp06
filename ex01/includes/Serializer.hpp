@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thuy-ngu <thuy-ngu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 00:42:16 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/14 14:08:06 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/17 20:23:31 by thuy-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define SERIALIZE_HPP
 
 #include <iostream>
-#include <cstdint> //for the cast
+#include <stdint.h> 
 
 #define MYEOF "\033[0m"
 #define MYRED "\033[1;31m"

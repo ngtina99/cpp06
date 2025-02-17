@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thuy-ngu <thuy-ngu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 01:32:34 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/14 16:35:52 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/17 20:25:49 by thuy-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../includes/B.hpp"
 #include "../includes/C.hpp"
 #include "../includes/Base.hpp"
+#include <cstdlib>
 
 Base *generate(void) {
 	switch(rand() % 3) {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thuy-ngu <thuy-ngu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 01:07:33 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/14 14:40:26 by ngtina1999       ###   ########.fr       */
+/*   Updated: 2025/02/17 20:20:30 by thuy-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,10 @@ int main() {
 	delete d2;
 
 	// Null Pointer Test
-	Data *nullPtr = nullptr;
+	Data *nullPtr = NULL;
+
 	uintptr_t rawNull = Serializer::serialize(nullPtr);
+
 	Data *deserializedNull = Serializer::deserialize(rawNull);
 
 	std::cout << "\n- Null Pointer Test:\n";
@@ -72,7 +74,7 @@ int main() {
 	std::cout << "Deserialized Null: " << deserializedNull << std::endl;
 
 	std::cout << "Null Pointer Check: ";
-	if (deserializedNull == nullptr) {
+	if (deserializedNull == nullPtr) {
 		std::cout << MYGREEN << "PASSED" << MYEOF <<std::endl;
 	} else {
 		std::cout << MYRED << "FAILED" << MYEOF << std::endl;

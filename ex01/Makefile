@@ -18,7 +18,8 @@ all: $(NAME)
 $(NAME): $(OBJ) $(HEADER)
 	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
 
-
+%.o: %.cpp
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
