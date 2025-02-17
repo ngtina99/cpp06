@@ -11,12 +11,14 @@ HEADER = $(addprefix $(INC_DIR), $(INC))
 CC = c++
 RM = rm -f
 
-CPPFLAFGS =  -Wall -Wextra -Werror -std=c++98
+CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
 	$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+
+
 
 clean:
 	$(RM) $(OBJ)
