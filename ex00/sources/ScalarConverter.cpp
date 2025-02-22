@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thuy-ngu <thuy-ngu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ngtina1999 <ngtina1999@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 03:37:54 by ngtina1999        #+#    #+#             */
-/*   Updated: 2025/02/17 20:04:37 by thuy-ngu         ###   ########.fr       */
+/*   Updated: 2025/02/23 00:40:39 by ngtina1999       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ double ScalarConverter::StringToDouble(const std::string &value) {
 		}
 		if (value[i] == '.') {
 			isFraction  = true;
+			i++;
 			continue;
 		}
 		if (value[i] == 'f')
