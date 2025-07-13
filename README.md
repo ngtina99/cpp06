@@ -16,17 +16,17 @@ make
 📂 ex01
 
 ```bash
-cd serializer
+cd ex01
 make
-./zombiehorde
+./serializer
 ```
 
 📂 ex02
 
 ```bash
-cd downcast
+cd ex02
 make
-./brain
+./downcast
 ```
 
 ## 📝 Exercise Descriptions
